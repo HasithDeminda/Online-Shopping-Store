@@ -1,0 +1,90 @@
+.container-footer {
+  display: flex;
+  background-color: #263238;
+  color: white;
+  @media only screen and (max-width: 380px) {
+    flex-direction: column;
+  }
+
+  .footer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    .logo {
+      text-align: center;
+      letter-spacing: 3px;
+    }
+
+    .description {
+      margin: 20px 20px;
+      text-align: justify;
+      letter-spacing: 1px;
+      padding: 20px;
+      
+    }
+
+    .socialmedia-container {
+      display: flex;
+      margin: 0px 40px;
+
+      @media only screen and (max-width: 380px) {
+        justify-content: space-around;
+      }
+
+      .socialIcon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 25px;
+        color: white;
+      }
+    }
+  }
+
+  .footer-center {
+    flex: 1;
+    padding: 20px;
+
+    .title {
+      margin-bottom: 35px;
+      letter-spacing: 3px;
+    }
+
+    .List {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        width: 50%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .footer-right {
+    flex: 1;
+    padding: 20px;
+
+    .title {
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+    }
+
+    .contact-item {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      line-height: 200%;
+    }
+    .payment-img {
+      width: 50%;
+    }
+  }
+}

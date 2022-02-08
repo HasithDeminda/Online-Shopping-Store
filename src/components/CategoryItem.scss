@@ -1,0 +1,42 @@
+.container-categoryItem {
+  flex: 1;
+  margin: 10px;
+  height: 70vh;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @media only screen and (max-width: 380px) {
+      height: 400px;
+    }
+  }
+
+  .info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .info-button {
+      border: none;
+      padding: 12px;
+      background-color: white;
+      color: grey;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.container-productList {
+  .title {
+    margin: 20px;
+  }
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+
+    .filter {
+      margin: 20px;
+      @media only screen and (max-width: 380px) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      span {
+        font-size: 20px;
+        font-weight: 600;
+        margin-right: 20px;
+
+      }
+      select {
+        padding: 10px;
+        margin-right: 20px;
+
+        @media only screen and (max-width: 380px) {
+          margin: 10px 0px;
+          
+        }
+      }
+    }
+  }
+}
