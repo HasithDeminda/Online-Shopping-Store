@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
 
 //REGISTER
 router.post("/register", async (req, res) => {
@@ -36,11 +37,23 @@ router.post("/login", async (req, res) => {
       process.env.PASS_SEC
     );
 
-    const password = hashedPassword.toString(CryptoJS.enc.Utf8);
+    const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
-    !password && res.status(401).json("Invalid Password!");
+    OriginalPassword !== req.body.password &&
+      res.status(401).json("Incorrect Password!");
 
-    res.status(200).json(user);
+    const accessToken = jwt.sign(
+      {
+        id: user._id,
+        isAdmin: user.isAdmin,
+      },
+      process.env.JWT_SEC,
+      { expiresIn: "3d" }
+    );
+
+    const { password, ...others } = user._doc;
+
+    res.status(200).json({ ...others, accessToken });
   } catch (err) {
     res.status(500).json(err);
   }

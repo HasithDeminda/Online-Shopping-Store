@@ -17,7 +17,7 @@ mongoose
 //Routes
 app.use(express.json());
 app.use("/api/user", userRoute);
-app.use("/api/auth", authRoute); 
+app.use("/api/auth", authRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend Server is Running on PORT:5000");
