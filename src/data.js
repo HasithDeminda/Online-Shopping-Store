@@ -24,16 +24,19 @@ export const categories = [
     id: 1,
     img: "https://assets.ajio.com/medias/sys_master/root/20220121/DwGv/61ea58afaeb2695cdd2436ee/-473Wx593H-461575169-maroon-MODEL.jpg",
     title: "Men's Wears",
+    cat: "Men",
   },
   {
     id: 2,
     img: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/8661651/2019/8/13/251d9b53-7360-442b-9e3f-5902b19dd2ce1565693537739-Roadster-Women-Red-Solid-T-Shirt-591565693537412-1.jpg",
     title: "Women's Wears",
+    cat: "Women",
   },
   {
     id: 3,
     img: "https://i1.adis.ws/i/jpl/bl_085816_h?w=638&h=638&fmt=webp",
     title: "Kid's Wears",
+    cat: "Kids",
   },
 ];
 
