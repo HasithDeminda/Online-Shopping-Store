@@ -11,11 +11,16 @@ import { useState } from "react";
 const ProductList = () => {
   const location = useLocation();
 
-  const cat = location.pathname.split("/")[2];
-  const [filter, setFilter] = useState({});
+  const cat = location.pathname.split("/")[2]; //Split the pathname
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("Newest");
 
   const handleFilters = (e) => {
     const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
   };
 
   return (
@@ -38,7 +43,7 @@ const ProductList = () => {
             <option>Blue</option>
           </select>
 
-          <select name="color" onChange={handleFilters}>
+          <select name="size" onChange={handleFilters}>
             <option disabled>Size</option>
             <option>XS</option>
             <option>S</option>
@@ -49,14 +54,17 @@ const ProductList = () => {
         </div>
         <div className="filter">
           <span>Sort Products:</span>
-          <select className="filter-select">
-            <option disabled>Newest</option>
-            <option>Price (ASC)</option>
-            <option>Price (DESC)</option>
+          <select
+            className="filter-select"
+            onChange={(e) => setSort(e.target.value)}
+          >
+            <option value="Newest">Newest</option>
+            <option value="ASC">Price (ASC)</option>
+            <option value="DESC">Price (DESC)</option>
           </select>
         </div>
       </div>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </div>
