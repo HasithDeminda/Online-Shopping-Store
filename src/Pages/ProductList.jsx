@@ -5,8 +5,19 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
 import "./ProductList.scss";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const ProductList = () => {
+  const location = useLocation();
+
+  const cat = location.pathname.split("/")[2];
+  const [filter, setFilter] = useState({});
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+  };
+
   return (
     <div className="container-productList">
       <Navbar />
@@ -17,10 +28,8 @@ const ProductList = () => {
         <div className="filter">
           <span>Filter Products:</span>
 
-          <select>
-            <option disabled selected>
-              Color
-            </option>
+          <select name="color" onChange={handleFilters}>
+            <option disabled>Color</option>
             <option>White</option>
             <option>Black</option>
             <option>Red</option>
@@ -29,10 +38,8 @@ const ProductList = () => {
             <option>Blue</option>
           </select>
 
-          <select>
-            <option disabled selected>
-              Size
-            </option>
+          <select name="color" onChange={handleFilters}>
+            <option disabled>Size</option>
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -43,9 +50,7 @@ const ProductList = () => {
         <div className="filter">
           <span>Sort Products:</span>
           <select className="filter-select">
-            <option disabled selected>
-              Newest
-            </option>
+            <option disabled>Newest</option>
             <option>Price (ASC)</option>
             <option>Price (DESC)</option>
           </select>
