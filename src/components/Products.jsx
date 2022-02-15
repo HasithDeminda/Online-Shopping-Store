@@ -16,8 +16,8 @@ const Products = ({ cat, filters, sort }) => {
         // So, if there's a category first query will execute and if there's no category, 2nd query will execute
         const res = await axios.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : "http://localhost:5000/api/products"
+            ? `http://localhost:5000/api/products?categories=${cat}`
+            : "http://localhost:5000/api/products/"
         );
         setProducts(res.data);
       } catch (error) {}
@@ -25,14 +25,47 @@ const Products = ({ cat, filters, sort }) => {
     getProducts();
   }, [cat]);
 
+  useEffect(() => {
+    if (sort === "Newest") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "ASC") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    } else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    }
+  }, [sort]);
+
+  useEffect(() => {
+    cat &&
+      setFilteredProducts(
+        products.filter((item) => {
+          Object.entries(filters).every(([key, value]) =>
+            item[key].includes(value)
+          );
+        })
+      );
+  }, [products, cat, filters]);
+
+  // console.log(filteredProducts);
   // console.log(cat, filters, sort);
   return (
     <div className="container-products">
-      {popularProducts.map((item) => (
-        <SingleProduct item={item} key={item.id} />
-      ))}
+      {cat
+        ? filteredProducts.map((item) => (
+            <SingleProduct item={item} key={item.id} />
+          ))
+        : popularProducts
+            .slice(0, 8)
+            .map((item) => <SingleProduct item={item} key={item.id} />)}
     </div>
   );
+  
 };
 
 export default Products;
