@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import Payment from "./Pages/Payment";
+// import Payment from "./Pages/Payment";
 import Product from "./Pages/Product";
 import ProductList from "./Pages/ProductList";
 import Register from "./Pages/Register";
@@ -28,6 +28,10 @@ const App = () => {
 
         <Route path="/cart">
           <Cart />
+        </Route>
+
+        <Route path="/success">
+          <SuccessPayment />
         </Route>
 
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>

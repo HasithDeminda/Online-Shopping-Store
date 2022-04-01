@@ -4,6 +4,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 //Cerated only because ${Info} is not working with scss
 const Info = styled.div`
@@ -26,9 +27,12 @@ const SingleProduct = ({ item }) => {
         <div className="icon">
           <ShoppingCartIcon />
         </div>
-        <div className="icon">
-          <SearchIcon />
-        </div>
+
+        <Link to={`/product/${item._id}`}>
+          <div className="icon">
+            <SearchIcon />
+          </div>
+        </Link>
         <div className="icon">
           <FavoriteBorderIcon />
         </div>

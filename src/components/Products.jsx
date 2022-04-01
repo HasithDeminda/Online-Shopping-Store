@@ -41,14 +41,15 @@ const Products = ({ cat, filters, sort }) => {
     }
   }, [sort]);
 
+  //Filtering
   useEffect(() => {
     cat &&
       setFilteredProducts(
-        products.filter((item) => {
+        products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
             item[key].includes(value)
-          );
-        })
+          )
+        )
       );
   }, [products, cat, filters]);
 
@@ -60,12 +61,11 @@ const Products = ({ cat, filters, sort }) => {
         ? filteredProducts.map((item) => (
             <SingleProduct item={item} key={item.id} />
           ))
-        : popularProducts
+        : products
             .slice(0, 8)
             .map((item) => <SingleProduct item={item} key={item.id} />)}
     </div>
   );
-  
 };
 
 export default Products;
