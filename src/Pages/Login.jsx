@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../redux/apiCalls";
 import "./Login.scss";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
+
   return (
     <div className="container-login">
       <div class="container">
@@ -17,16 +28,24 @@ const Login = () => {
           <form class="addCountryForm">
             <div class="topic">LOGIN HERE</div>
             <div class="input-box">
-              <input type="text" required />
+              <input
+                type="text"
+                required
+                onChange={(e) => setUsername(e.target.value)}
+              />
               <label>Username</label>
             </div>
             <div class="input-box">
-              <input type="password" required />
+              <input
+                type="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <label>Password</label>
             </div>
 
             <div class="input-box">
-              <input type="submit" value="Login" />
+              <input type="submit" value="Login" onClick={handleLogin} />
             </div>
             <span style={{ cursor: "pointer" }}>
               DO NOT REMEMBER THE PASSWORD ?

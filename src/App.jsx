@@ -10,7 +10,7 @@ import Register from "./Pages/Register";
 import SuccessPayment from "./Pages/SuccessPayment";
 
 const App = () => {
-  const user = true;
+  const user = false;
   return (
     <Router>
       <Switch>
