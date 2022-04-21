@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { login } from "../redux/apiCalls";
@@ -8,6 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  // const { isFetching, error } = useSelector((state) => state.user);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -45,8 +46,14 @@ const Login = () => {
             </div>
 
             <div class="input-box">
-              <input type="submit" value="Login" onClick={handleLogin} />
+              <input
+                type="submit"
+                value="Login"
+                onClick={handleLogin}
+                // disabled={isFetching}
+              />
             </div>
+            {/* {error && <div className="error">Something Went Wrong !</div>} */}
             <span style={{ cursor: "pointer" }}>
               DO NOT REMEMBER THE PASSWORD ?
             </span>
