@@ -1,7 +1,7 @@
 import React, { useState, useSelector } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import { login } from "../redux/apiCalls";
+import { login } from "../../redux/apiCalls";
 import "./Login.scss";
 
 const Login = () => {
@@ -12,23 +12,23 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // login(dispatch, { username, password });
+    login(dispatch, { username, password });
   };
 
   return (
     <div className="container-login">
-      <div class="container">
-        <div class="content">
-          <div class="image-box">
+      <div className="container">
+        <div className="content">
+          <div className="image-box">
             <img
               src="https://www.vcbay.news/wp-content/uploads/2021/11/happy-people-shopping-online_74855-5865.jpg"
               alt=""
             />
           </div>
 
-          <form class="addCountryForm">
-            <div class="topic">ADMIN LOGIN</div>
-            <div class="input-box">
+          <form className="addCountryForm">
+            <div className="topic">ADMIN LOGIN</div>
+            <div className="input-box">
               <input
                 type="text"
                 required
@@ -36,7 +36,7 @@ const Login = () => {
               />
               <label>Username</label>
             </div>
-            <div class="input-box">
+            <div className="input-box">
               <input
                 type="password"
                 required
@@ -45,7 +45,7 @@ const Login = () => {
               <label>Password</label>
             </div>
 
-            <div class="input-box">
+            <div className="input-box">
               <input
                 type="submit"
                 value="Login"
